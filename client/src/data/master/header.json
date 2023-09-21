@@ -1,0 +1,190 @@
+{
+    "logo": {
+        "path": "/ecommerce",
+        "src": "images/logo.webp",
+        "alt": "blue",
+        "name": "Kullu-Dussehra"
+    },
+    "toggle": { 
+        "open": "menu_open", 
+        "close": "menu" 
+    },
+    "search":{
+        "icon": "search",
+        "placeholder": "Quick finding..." 
+    },
+    "theme": {
+        "icon": { "light": "light_mode", "dark": "dark_mode" },
+        "title": "Theme Mode",
+        "addClass": "theme"
+    },
+ 
+    "cart": {
+        "icon": "shopping_cart", 
+        "title": "Shopping",  
+        "addClass": "cart",   
+        "badge": { "text": "02", "variant": "primary" },
+        "dropdown": {
+            "title": "Orders",
+            "dotsMenu": {
+                "dots": "settings",
+                "dropdown": [
+                    { "icon": "drafts", "text": "mark all as read" },
+                    { "icon": "markunread", "text": "mark all as unread" },
+                    { "icon": "delete", "text": "delete all order" }
+                ]
+            },
+            "button": { 
+                "path": "/order-list", 
+                "label": "view all order" 
+            },
+            "items": [
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/07.webp", "images/product/08.webp"],
+                        "count": "+3"
+                    },
+                    "name": "miron mahmud",
+                    "price": "$289",
+                    "addClass": "active",
+                    "shortMoment": "now",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/01.webp", "images/product/02.webp"],
+                        "count": "+1"
+                    },
+                    "name": "tahmina bonny",
+                    "price": "$78",
+                    "addClass": "active",
+                    "shortMoment": "2m",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/03.webp", "images/product/04.webp"],
+                        "count": "+5"
+                    },
+                    "name": "shikdar ahmed",
+                    "price": "$2,975",
+                    "shortMoment": "1h",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/05.webp", "images/product/06.webp"],
+                        "count": "+1"
+                    },
+                    "name": "labonno khan",
+                    "price": "$96",
+                    "shortMoment": "3d",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/10.webp", "images/product/09.webp"],
+                        "count": "+2"
+                    },
+                    "name": "kamlesh hasan",
+                    "price": "$103",
+                    "shortMoment": "1w",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/04.webp", "images/product/02.webp"],
+                        "count": "+3"
+                    },
+                    "name": "rabeya akter",
+                    "price": "$190",
+                    "shortMoment": "2m",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["images/product/06.webp", "images/product/01.webp"],
+                        "count": "+1"
+                    },
+                    "name": "tanvir ahmed",
+                    "price": "$87",
+                    "shortMoment": "1y",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+   
+    "profile": {
+        "name": "Super Admin",
+        "image": "images/avatar/01.webp",
+        "dropdown": [
+            { "path": "/my-account", "icon": "person", "text": "my account" },
+            { "path": "/forgot-password", "icon": "privacy_tip", "text": "reset password" },
+            { "path": "/login", "icon": "lock", "text": "logout" , "onClick" : "logout"}
+        ]
+    }
+}

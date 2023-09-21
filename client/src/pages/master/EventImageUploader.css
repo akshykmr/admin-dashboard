@@ -1,0 +1,56 @@
+
+.eventImg {
+    position: relative;
+    width: 60%;
+    height: 250px;
+    border-radius: 5%;
+    display: flex;
+    border: 1px solid;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5%;
+    }
+    .add_svg {
+      font-size: 32px;
+      border-radius: 5%;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid;
+      color: rgba(255, 255, 255, 0.17);
+      background-color: rgba(0, 0, 0, 0.185);
+      svg{
+        animation: none;
+        &:active{
+            color: white;
+          }
+      }
+     
+    }
+    .img_input {
+      opacity: 50%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      input {
+        height: 100%;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 5%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: rgba(0, 0, 0, 0.53);
+      }
+    }
+  }

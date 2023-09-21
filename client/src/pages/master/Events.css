@@ -1,0 +1,52 @@
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+.carousel-container:hover .carousel {
+    animation-play-state: paused;
+}
+
+.carousel-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent text wrapping */
+    width: 100%; /* Take the full width of the carousel-container */
+}
+
+.carousel {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    transition: transform 0.3s ease; /* Add smooth transition for scroll */
+    transition: transform 0.3s ease;
+    cursor: grab;
+    user-select: none;
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    background-color: #f0f0f0;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Allow grabbing cursor when dragging */
+.carousel-container:active {
+    cursor: grabbing;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

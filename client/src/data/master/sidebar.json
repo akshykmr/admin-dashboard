@@ -1,0 +1,43 @@
+{
+    "navs": [
+        {
+            "title": "Menu",
+            "menu": [
+                { 
+                    "href": "/",
+                    "icon": "dashboard", 
+                    "text": "dashboard"
+                },
+               
+                { 
+                    "href": "/member-list",
+                    "icon": "account_circle", 
+                    "text": "Member"
+                },
+                { 
+                    "href": "/user-list",
+                    "icon": "groups", 
+                    "text": "Users"
+                },
+                { 
+                    "icon": "event", 
+                    "text": "Events",
+                     "href": "/events"
+
+                },
+                { 
+                    "icon": "local_parking", 
+                    "text": "Parking",
+                    "href": "/parking"
+                  
+                },
+                { 
+                    "href": "/settings",
+                    "icon": "settings", 
+                    "text": "settings" 
+                }
+            ]
+        }
+    ],
+    "button": { "icon": "lock", "path": "/login", "text": "logout" }
+}
