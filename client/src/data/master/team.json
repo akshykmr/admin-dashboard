@@ -1,0 +1,20 @@
+{
+    "pageTitle": "Team",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Team-Member" }
+    ],
+    "float": [
+        { "title": "Total Members", "digit": "10", "icon": "pending", "variant": "lg purple" }, 
+        { "title": "Active Member", "digit": "7", "icon": "check_circle", "variant": "lg green" },
+        { "title": "blocked Member", "digit": "3", "icon": "remove_circle", "variant": "lg red" }
+    ],
+    "filter":[
+        { "label": "status by", "option": ["All","Active", "blocked"] },
+        { "label": "search by", "type": "search", "placeholder": "name / email " }
+    ],
+    "table":{
+        "thead": ["name",  "email",  "phone", "status", "permission", "action"]
+    }
+   
+}

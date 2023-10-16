@@ -1,0 +1,55 @@
+{
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "User-profile" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "profile": {
+        "src": "images/avatar/01.svg",
+        "alt": "avatar",
+        "size": "lg",
+        "fullname": "miron mahmud",
+        "role": "Admin",
+        "icon":"settings"
+    },
+    "contact":[
+        { "icon": "phone_in_talk", "text": "+91 987-654-3210" },
+        { "icon": "feed", "text": "demo@example.com" }
+    ],
+    "status": {
+        "Status": "Active"
+    },
+    "permissions": {
+        "permissions": ["Parking","Event"]
+    },
+    "social": [
+        { "path": "#", "icon": "icofont-facebook", "type": "facebook" },
+        { "path": "#", "icon": "icofont-twitter", "type": "twitter" },
+        { "path": "#", "icon": "icofont-linkedin", "type": "linkedin" },
+        { "path": "#", "icon": "icofont-whatsapp", "type": "whatsapp" },
+        { "path": "#", "icon": "icofont-youtube-play", "type": "youtube" }
+    ],
+    "float": [
+        { "title": "total orders", "digit": "5789", "icon": "shopping_cart", "variant": "sm purple" }, 
+        { "title": "total reviews", "digit": "2373", "icon": "hotel_class", "variant": "sm yellow" },
+        { "title": "total products", "digit": "7893", "icon": "shopping_bag", "variant": "sm green" }
+    ],
+    "activity": {
+        "title": "user activities",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        }
+    }
+}

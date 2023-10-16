@@ -8,29 +8,64 @@
                     "icon": "dashboard", 
                     "text": "dashboard"
                 },
-               
                 { 
-                    "href": "/member-list",
-                    "icon": "account_circle", 
-                    "text": "Member"
+                    "icon": "history", 
+                    "text": "Ticket History",
+                    "href": "/ticket-history"
+                  
                 },
                 { 
-                    "href": "/user-list",
-                    "icon": "groups", 
-                    "text": "Users"
+                    "icon": "qr_code_scanner", 
+                    "text": "Scanned Ticket",
+                    "href": "/scanned-ticket-history"
+                  
                 },
                 { 
                     "icon": "event", 
                     "text": "Events",
-                     "href": "/events"
-
+                    "submenu": [
+                        { "href": "/upcoming-events", "text": "Upcoming Events" },
+                        { "href": "/ongoing-events", "text": "Ongoing Events" },
+                        { "href": "/expired-events", "text": "Expired Events" },
+                        { "href": "/add-event", "text": "Add Event" }
+                    ]
                 },
                 { 
                     "icon": "local_parking", 
                     "text": "Parking",
-                    "href": "/parking"
-                  
+                    "submenu": [
+                        { "href": "/all-parking", "text": "All Parking" },
+                        { "href": "/assigned-parking", "text": "Assigned " },
+                        { "href": "/unassigned-parking", "text": "unassigned parking" },
+                        { "href": "/add-parking", "text": "Add Parking" }
+                    ]
                 },
+                { 
+                    "icon": "house", 
+                    "text": "Homepage",
+                    "submenu": [
+                        { "href": "/homepage", "text": "View Banner" },
+                        { "href": "/add-banner", "text": "Add Banner" }
+                    ]
+                },
+                { 
+                    "href": "/user",
+                    "icon": "groups", 
+                    "text": "Users"
+                },
+                { 
+                    "icon": "account_circle", 
+                    "text": "Team",
+                    "submenu": [
+                        { "href": "/team", "text": "View Team" },
+                        { "href": "/add-team", "text": "Add Member" }
+                    ]
+                },
+               
+               
+               
+                 
+                
                 { 
                     "href": "/settings",
                     "icon": "settings", 
@@ -38,6 +73,5 @@
                 }
             ]
         }
-    ],
-    "button": { "icon": "lock", "path": "/login", "text": "logout" }
+    ]
 }

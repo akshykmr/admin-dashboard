@@ -2,12 +2,14 @@ import React from "react";
 import { Box, Input, Label, Select, Option } from "../elements";
 
 
-export default function LabelField({ label, labelDir, fieldSize, name, value, onChange, option, type, placeholder, ...rest}) {
+export default function LabelField({ label, labelDir, fieldSize, name, value, onChange, option, type, placeholder, margin,...rest}) {
     return (
-        <Box className={`mc-label-field-group ${ label ? labelDir || "label-col" : "" }`}>
+        <Box className={`mc-label-field-group ${ label ? labelDir || "label-col" : "" }`} style={margin && {marginTop :"5px"}}>
             {label && <Label className="mc-label-field-title">{ label }</Label>}
             {type ? 
+          
                 <Input 
+                style={margin && {height :"45px"}}
                     type = { type || "text" } 
                     name={name}
                     value={value}
@@ -19,7 +21,8 @@ export default function LabelField({ label, labelDir, fieldSize, name, value, on
             :
             <Select
             className={`mc-label-field-select ${fieldSize || "w-md h-sm"}`}
-            name={name} // Pass the name here
+            name={name 
+            } // Pass the name here
             value={value} // Pass the value here
             onChange={onChange}
             {...rest}
@@ -30,8 +33,6 @@ export default function LabelField({ label, labelDir, fieldSize, name, value, on
               </Option>
             ))}
           </Select>
-            }{
-                
             }
         </Box>
     )

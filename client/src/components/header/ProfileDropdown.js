@@ -5,34 +5,43 @@ import { DuelText, RoundAvatar } from "..";
 import { Anchor, Button } from "../elements";
 
 export default function ProfileDropdown({ name, username, image, dropdown }) {
+  const hangleLogOut = () => {
+    localStorage.clear();
+  };
 
-  const hangleLogOut = () =>{
-    localStorage.removeItem("token");
-  }
+  const role = localStorage.getItem("role");
 
-    const issuper_admin = username === '';
-  
+  return (
+    <Dropdown className="mc-header-user">
+      <Dropdown.Toggle className="mc-dropdown-toggle">
+        <RoundAvatar src={image} alt="avatar" size="xs" />
+        <DuelText title={name} descrip={username} size="xs" />
+      </Dropdown.Toggle>
+      <Dropdown.Menu align="end" className="mc-dropdown-paper">
+      {dropdown.map((item, index) => {
+  // Define conditions to determine if the link should be visible based on role
+  const isAdminVisible = role === "admin" && (item.path === "/my-account" || item.path === "/login")
+  const isSuperAdminVisible = role === "super_admin" && (item.path === "/reset-password" || item.path === "/login")
+
+  // Check if either admin or super_admin visibility conditions are met
+  if (isAdminVisible || isSuperAdminVisible) {
     return (
-      <Dropdown className="mc-header-user">
-        <Dropdown.Toggle className="mc-dropdown-toggle">
-          <RoundAvatar src={image} alt="avatar" size="xs" />
-          <DuelText title={name} descrip={username} size="xs" />
-        </Dropdown.Toggle>
-        <Dropdown.Menu align="end" className="mc-dropdown-paper">
-            
-          {dropdown.map((item, index) => (
-            issuper_admin && item.path === '/my-account' ? null : (
-              <Link key={index} to={item.path}>
-                <Button
-                  icon={item.icon}
-                  text={item.text}
-                  className="mc-dropdown-menu"
-                  onClick={item.onClick === "logout" ? ()=>hangleLogOut() : ""}
-                />
-              </Link>
-            )
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+      <Link key={index} to={item.path}>
+        <Button
+          icon={item.icon}
+          text={item.text}
+          className="mc-dropdown-menu"
+          onClick={item.onClick === "logout" ? () => hangleLogOut() : null}
+        />
+      </Link>
     );
   }
+
+  // If none of the conditions are met, do not render the link
+  return null;
+})}
+
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+}

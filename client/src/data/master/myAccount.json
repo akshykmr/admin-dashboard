@@ -2,12 +2,11 @@
     "pageTitle": "my account",
     "breadcrumb": [
         { "path": "/", "text": "home" },
-        { "path": "/member-list", "text": "member-list" },
         { "text": "my-account" }
     ],
     "id": { "title": "unique id", "value": "#783404edft97e3445" },
-    "name": { "title": "fullname", "value": "Miron Mahmud" },
-    "username": { "title": "username", "value": "@mironcoder" },
+    "name": { "title": "Name", "value": "Miron Mahmud" },
+    "username": { "title": "Email", "value": "@mironcoder" },
     "role": { "title": "role", "activeOption": "member", "option": ["member", "admin", "vendor", "founder"] },
     "status": { "title": "status", "activeOption": "approved", "option": ["approved", "pending", "blocked"] },
     "bio": { "title": "biography", "longText": "I consider myself as a creative, professional and a flexible person. I can adapt with any kind of brief and design style" },
@@ -25,7 +24,7 @@
         { "type": "url", "title": "pinterest", "value": "https://example.com/" }
     ],
     "avatar": {
-        "src": "images/avatar/01.webp",
+        "src": "images/avatar/01.svg",
         "alt": "avatar"
     }
 }

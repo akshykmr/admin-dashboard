@@ -1,5 +1,5 @@
 /*
-*   Template name: Kullu-Dussehra - React Admin Dashboard Template
+*   Template name:  Kullu-Dussehra Dashboard - React Admin Dashboard Template
 *   Themeforest portfolio: (https://themeforest.net/user/mironcoder/portfolio)
 *   Service center: (https://www.fiverr.com/mironcoder)
 *   Support email: (mironcoder@gmail.com)
@@ -681,7 +681,7 @@ textarea.form-control {
   min-width: -moz-fit-content;
   min-width: fit-content;
   padding: 15px 15px;
-  text-align: left;
+  text-align: center;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -753,7 +753,7 @@ textarea.form-control {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  gap: 0px 5px;
+  gap: 0px 20px;
 }
 .mc-table-profile img {
   width: 25px;
@@ -935,12 +935,14 @@ textarea.form-control {
 }
 
 .mc-table-badge {
+  width: 88.95px;
+  text-align: center;
   line-height: 22px;
   border-radius: 6px;
   padding: 0px 7px 1px;
-  width: -webkit-fit-content;
+  /* width: -webkit-fit-content;
   width: -moz-fit-content;
-  width: fit-content;
+  width: fit-content; */
   text-transform: capitalize;
   font-size: 13px;
   font-weight: 500;
@@ -2393,6 +2395,26 @@ textarea.form-control {
   color: #ae640f;
 }
 
+
+.mc-ecommerce-card.red {
+  background: -webkit-gradient(linear, right top, left top, from(#f4352b), to(#e1940e));
+  background: linear-gradient(to left, #f4d02b, #e1940e);
+}
+.mc-ecommerce-card.red .mc-ecommerce-card-icon {
+  color: #f6e053;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ed2913), to(#e10e0eb6));
+  background: linear-gradient(#edb213, #e1940e);
+}
+.mc-ecommerce-card.red .mc-ecommerce-card-trend {
+  color: #e1940e;
+}
+.mc-ecommerce-card.red .mc-ecommerce-card-compare mark {
+  background-color: #ae640f;
+}
+.mc-ecommerce-card.red .mc-dropdown-toggle {
+  color: #ae640f;
+}
+
 .mc-ecommerce-card-trend {
   position: absolute;
   bottom: 0px;
@@ -2413,7 +2435,7 @@ textarea.form-control {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 0px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 
 .mc-ecommerce-card-meta {
@@ -5830,13 +5852,13 @@ textarea.form-control {
   gap: 10px;
 }
 
-.mc-message-member-list {
+.mc-message-/team {
   overflow-y: auto;
   height: calc(100vh - 230px);
   padding: 5px 7px 5px 10px;
 }
 @media (max-width: 767px) {
-  .mc-message-member-list {
+  .mc-message-/team {
     height: 400px;
   }
 }

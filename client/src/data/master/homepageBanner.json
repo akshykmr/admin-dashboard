@@ -1,0 +1,16 @@
+{
+    "pageTitle": "Homepage",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Banner" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+            { "label": "rating by", "option": ["1 star", "2 star", "3 star", "4 star", "5 star"] },
+            { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+            { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] }
+        ],
+        "thead": ["Banner Name",  "status",  "Action", "Active / Deactivate"]
+    }
+}

@@ -1,7 +1,7 @@
 svg {
     width: 1.8em;
     transform-origin: center;
-    animation: rotate4 2s linear infinite;
+    animation:none;
    }
    
    circle {

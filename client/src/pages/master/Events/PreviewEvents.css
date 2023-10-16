@@ -1,0 +1,151 @@
+.eventdetails_body {
+  /* border: 2px solid; */
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.gallary {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  height: 250px;
+}
+.leftbox {
+  /* border: 1px solid red; */
+  /* height: 100%; */
+  width: 100%;
+}
+.leftbox img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.rightbox {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  overflow: hidden;
+  width: 60%;
+}
+.first_img {
+  height: 48%;
+  width: 100%;
+  /* border-radius: 8px; */
+  /* border: 2px solid ; */
+}
+.first_img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.last_img {
+  height: 48%;
+  width: 100%;
+  /* border-radius: 8px; */
+  /* border: 2px solid ; */
+  position: relative;
+}
+.last_img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.last_img .svg {
+  font-size: 22px;
+  border-radius: 8px;
+  /* border: 6px solid red; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.412);
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  color: white;
+  cursor: pointer;
+}
+.description_body {
+  /* border: 2px solid; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.description_body h4 {
+    line-height: 27px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.description_body h5 {
+    line-height: 27px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.description_body p {
+    /* line-height: 27px; */
+    font-size: 12px;
+    /* font-weight: 600; */
+    text-transform: capitalize;
+}
+.footer p {
+    /* line-height: 27px; */
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.common_style {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.row-1{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.row-1 h5, h4{
+     width: auto; 
+}
+.row_first, .row_sec {
+  display: flex;
+  /* border: 2px solid; */
+} 
+.add{
+    width: 40%;
+}
+.loc{
+    width: 30%;
+}
+.type{
+    width: 20%;
+}
+.price{
+    width: 20%;
+}
+.capacity{
+    width: 20%;
+}
+/* .row_first, .row_sec h4, h5{
+    display: flex;
+    width: 928px;
+    gap: 100px;
+    justify-content: space-between;
+  } */

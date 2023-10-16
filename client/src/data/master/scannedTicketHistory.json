@@ -1,0 +1,17 @@
+{
+    "pageTitle": "Scanned Ticket History",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Scanned Tickets" }
+    ],
+    "float": [
+        { "title": "Total Entries", "icon": "confirmation_number", "variant": "lg blue" } 
+    ],
+    "scanTicketData": {
+        "filter":[
+            { "label": "Filter by", "option": ["All","Active", "blocked"] },
+            { "label": "search by", "type": "search", "placeholder": " Booking Id " }
+        ],
+        "thead": ["User Name", "Booking Id", "Event Name", "Quantity", "Ticket Price", "Paid Amount", "Booking Date", "Event Date", "Status","Action"]
+    }
+}

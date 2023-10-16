@@ -1,0 +1,19 @@
+{
+    "pageTitle": "Ticket History",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "All Tickets" }
+    ],
+    "float": [
+        { "title": "Total Entries", "icon": "confirmation_number", "variant": "lg blue" }, 
+        { "title": "Valid  Tickets","icon": "local_activity", "variant": "lg green" },
+        { "title": "Scanned  Tickets", "icon": "book_online", "variant": "lg red" }
+    ],
+    "ticketHistory": {
+        "filter":[
+            { "label": "Filter by Event", "option": ["All","Active", "blocked"] },
+            { "label": "search by", "type": "search", "placeholder": " Booking Id " }
+        ],
+        "thead": ["User Name", "Booking Id", "Event Name", "Quantity", "Ticket Price", "Paid Amount", "Booking Date", "Event Date", "Status","Action"]
+    }
+}

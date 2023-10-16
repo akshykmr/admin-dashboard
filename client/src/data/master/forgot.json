@@ -1,9 +1,9 @@
 {
     "logo": {
-        "path": "/ecommerce",
+        "path": "/",
         "src": "images/logo.webp",
         "alt": "blue",
-        "name": "Kullu-Dussehra"
+        "name": " Kullu-Dussehra Dashboard"
     },
     "pattern": { 
         "src": "images/pattern.webp", 
@@ -14,14 +14,51 @@
         { 
             "icon": "email", 
             "type": "email", 
-            "placeholder": "Enter your email",
-            "fieldSize": "h-sm"
+            "placeholder": "Enter email ",
+            "fieldSize": "h-sm",
+            "name":"UserId"
+        },
+         { 
+            "icon": "pin", 
+            "type": "password", 
+            "placeholder": "Enter OTP",
+            "fieldSize": "w-100 h-sm",
+            "passwordVisible" : true,
+            "name":"otp"
+
+
+        },
+        { 
+            "icon": "password", 
+            "type": "password", 
+            "placeholder": "Enter Password",
+            "fieldSize": "w-100 h-sm",
+            "passwordVisible" : true,
+            "name":"password"
+
+
+        },
+        { 
+            "icon": "password", 
+            "type": "password", 
+            "placeholder": "Confirm the Password",
+            "fieldSize": "w-100 h-sm",
+            "passwordVisible" : true,
+            "name":"confirmPassword"
+
+
         }
     ],
-    "button": { "type": "button", "text": "get link", "fieldSize": "h-sm" },
+    "button": [
+        { "type": "button", "text": "get OTP", "fieldSize": "h-sm" },
+        
+        { "type": "button", "text": "Resend OTP", "fieldSize": "h-sm" }
+    ],
+
     "navigate": {
         "title": "Remember the password?",
         "path": "/login",
         "text": "login"
     }
+
 }

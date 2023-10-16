@@ -1,162 +1,373 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Form } from "react-bootstrap";
 import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
-import { Button, Image, Input, Text, Box, Icon,  Option, Heading } from "../elements";
-import userInfo from "../../data/master/userList.json";
-import { useNavigate } from 'react-router-dom';
-import {BiSolidUserCircle} from 'react-icons/bi'
+import { Button, Image, Text, Box } from "../elements";
+import { useNavigate } from "react-router-dom";
+import { MdEventNote } from "react-icons/md";
+import CustomeLoader from "../../pages/master/Loader/CustomeLoader";
+import ToggleBtn from "../../components/elements/togglebtn/ToggleBtn";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import TimeFormatter from "../elements/TimeFormatter";
 
+export default function EventTable({ thead, tbody, type, loader }) {
+  const serverUrl = process.env.REACT_APP_BASE_URL;
+  const token = localStorage.getItem("token");
 
-export default function UsersTable({ thead, tbody }) {
+  const navigate = useNavigate();
 
-    // console.log("hhhhh",tbody?.permission[0])
+  const [data, setData] = useState([]);
+  const [toggleStatus, setToggleStatus] = useState([]);
 
-    
-    const navigate = useNavigate();
+  useEffect(() => {
+    setData(tbody);
+  }, [tbody]);
 
-    const handleRedirect =()=>{ // this will automatically navigated to outputpage
-      navigate(`/member-profile`)
-    };
+  useEffect(() => {
+    if (data) {
+      const initialToggleStatus = data.map((item) => item.is_deleted);
+      setToggleStatus(initialToggleStatus);
+    }
+  }, [data]);
 
-    const [data, setData] = useState([]);
-    const [userData, setUserData] = React.useState("");
-    const [editModal, setEditModal] = React.useState(false);
-    const [blockModal, setBlockModal] = React.useState(false);
+  console.log(toggleStatus, "toggleStatuse");
 
-    useEffect(()=> { setData(tbody) }, [tbody]);
+  const handleToggle = async (index, isChecked) => {
+    const EventId = data[index]._id;
+    try {
+      const headers = {
+        token: token,
+      };
 
-    console.log(tbody,'tbidyt')
-    // const handleCheckbox = (event) => {
-    //     const { name, checked } = event.target;
+      const response = await axios.get(
+        `${serverUrl}/event/activeNotActiveEvent/${EventId}`,
+        { headers }
+      );
 
-    //     if(name === "allCheck") {
-    //         const checkData = data?.map((item)=> {
-    //             return { ...item, isChecked: checked };
-    //         });
-    //         setData(checkData);
-    //     }
-    //     else {
-    //         const checkData = data?.map((item) => 
-    //             item.name === name ? {...item, isChecked: checked} : item
-    //         );
-    //         setData(checkData);
-    //     }
-    // }
+      if (response.status === 200) {
+        setToggleStatus((prevToggleStatus) =>
+          prevToggleStatus.map((value, currentIndex) =>
+            currentIndex === index ? isChecked : value
+          )
+        );
+        if (isChecked === true) {
+          toast.error("Event Deactivated");
+        }
+        if (isChecked === false) {
+          toast.success("Event Activated");
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred");
+    }
+  };
 
-    return (
-        <Box className="mc-table-responsive">
-            <Table className="mc-table">
-                <Thead className="mc-table-head primary">
-                    <Tr>
-                        {/* <Th>
-                            <Box className="mc-table-check">
-                                <Input 
-                                    type="checkbox" 
-                                    name="allCheck"
-                                    checked={ data?.filter((item)=> item.isChecked !== true).length < 1 } 
-                                    onChange={ handleCheckbox } 
-                                />
-                                <Text>uid</Text>
-                            </Box>
-                        </Th> */}
-                        {thead.map((item, index) => (
-                            <Th key={ index }>{ item }</Th>
-                        ))}
-                    </Tr>
-                </Thead>
-                <Tbody className="mc-table-body even">
-                    {data?.map((item, index) => (
-                        <Tr key={ index }> 
-                            {/* <Td title="id">
-                                <Box className="mc-table-check">
-                                    <Input 
-                                        type="checkbox" 
-                                        name={item.name} 
-                                        checked={ item?.isChecked || false }
-                                        onChange={ handleCheckbox } 
-                                    />
-                                    <Text>#{ index + 1 }</Text>
-                                </Box>
-                            </Td> */}
-                            <Td title={ item?.name }>
-                                <Box className="mc-table-profile">
-                                    {item.src ?  <Image src={ item?.src } alt={ item?.alt } /> : <span className="d-flex justify-content-center fs-3 " >
-                                    <BiSolidUserCircle style={{animation:"none"}} />
-                                    </span>}
-                                    
-                                    <Text>{ item?.name }</Text>
-                                </Box>
-                            </Td>
-                            <Td title={ item?.type}>
-                                <Box className="mc-table-icon role">
-                                <Icon className="material-icons blue">{ "settings" }</Icon> 
-                                    <Text as="span">{ item.type }</Text>
-                                </Box>
-                            </Td>
-                            <Td title={ item.description }>{ item.description }</Td>
-                            <Td title={ item.address }>{ item.address }</Td>
-                            <Td title={ item.status }>
-                                { item.status === "ongoing" && <Text className="mc-table-badge green">{ item.status }</Text> }
-                                { item.status === "upcomming" && <Text className="mc-table-badge red">{ item.status }</Text> }
-                            </Td>
-                            <Td title={ item?.capacity}>{ item.capacity }</Td>
-                            <Td>
-                                <Box className="mc-table-action">
-                                
-                                    <Button title="Edit" className="material-icons text-primary" onClick={()=> setEditModal(true, setUserData(item))}>{ "edit" }</Button> 
-                                     <Button title="Block" className="material-icons edit " onClick={()=> handleRedirect()}>{"visibility"}</Button>
-                                     <Button title="Block" className="material-icons text-danger" onClick={()=> handleRedirect()}>{"delete"}</Button>
-                                   
-                                </Box>
-                            </Td>
-                        </Tr>
-                    ))}
-                </Tbody>
-                
-            </Table>
+  const handleActionOnEvent = async (index, isEdit, isView) => {
+    // handling action on particular event
+    localStorage.setItem("eventId", data[index]._id);
+    localStorage.setItem("redirectedFrom", type); // to remember the source while coming back from destination
+    if (isEdit) {
+      if (data.length) {
+        navigate("/update-event");
+      }
+    }
+    if (isView) {
+      if (data.length > 0) {
+        navigate("/view-event");
+      }
+    }
+  };
 
-            <Modal show={ editModal } onHide={()=> setEditModal(false, setUserData(""))}>
-                
-                <Box  className="mc-user-modal">
-                    {/* <Image src={ userData.src } alt={ userData?.alt } /> */}
-                    <Heading className='mt-4 ' as="h4">{ userData?.name }</Heading>
-                    <Text as="p">{ userData?.email }</Text>
-                    <Form.Group className="form-group inline mb-4">
-                        <Form.Label>role</Form.Label>
-                        <Form.Select>
-                            <Option>{ userData?.role ? userData?.role.text : "" }</Option>
-                            {userInfo.role.map((item, index)=> (
-                                <Option key={ index } value={ item }>{ item }</Option>
-                            ))}
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group className="form-group inline">
-                        <Form.Label>status</Form.Label>
-                        <Form.Select>
-                            <Option>{ userData?.status }</Option>
-                            {userInfo.status.map((item, index)=> (
-                                <Option key={ index } value={ item }>{ item }</Option>
-                            ))}
-                        </Form.Select>
-                    </Form.Group>
-                    <Modal.Footer>
-                        <Button type="button" className="btn btn-secondary" onClick={()=> setEditModal(false)}>close popup</Button>
-                        <Button type="button" className="btn btn-success" onClick={()=> setEditModal(false)}>save Changes</Button>
-                    </Modal.Footer>
-                </Box>
-            </Modal>
-            
-            {/* <Modal show={ blockModal } onHide={()=> setBlockModal(false)}>
-                <Box className="mc-alert-modal">
-                    <Icon type="new_releases" />
-                    <Heading as="h3">are your sure!</Heading>
-                    <Text as="p">Want to block this user's account?</Text>
-                    <Modal.Footer>
-                        <Button type="button" className="btn btn-secondary" onClick={()=> setBlockModal(false)}>nop, close</Button>
-                        <Button type="button" className="btn btn-danger" onClick={()=> setBlockModal(false)}>yes, block</Button>
-                    </Modal.Footer>
-                </Box>
-            </Modal> */}
-        </Box>
-    )
+  return (
+    <Box className="mc-table-responsive">
+      <ToastContainer />
+      <Table className="mc-table">
+        <Thead className="mc-table-head primary">
+          <Tr>
+            {thead.map((item, index) => (
+              <Th key={index}>{item}</Th>
+            ))}
+          </Tr>
+        </Thead>
+        {loader ? (
+          <Tr>
+            <Td colSpan={thead.length}>
+              <CustomeLoader />
+            </Td>
+          </Tr>
+        ) : (
+          <Tbody className="mc-table-body even">
+            {data?.length > 0 ? (
+              <>
+                {data?.map((item, index) => (
+                  <Tr key={index}>
+                   {/*////////////////////// NAME */}
+                    <Td title={item?.name}>
+                      <Box className="mc-table-profile">
+                        {item.image ? (
+                          <Image
+                            src={`${serverUrl}${item.image[0]}`}
+                            alt={item?.alt}
+                          />
+                        ) : (
+                          <span className="d-flex justify-content-center fs-3 ">
+                            <MdEventNote
+                              style={{
+                                animation: "none",
+                                fontSize: "18px",
+                                color: "#1a9f53",
+                              }}
+                            />
+                          </span>
+                        )}
+
+                        <Text>
+                          {item.name?.split(" ").slice(0, 3).join(" ")}
+                          {item.name?.split(" ").length > 3 ? " ..." : ""}
+                        </Text>
+                      </Box>
+                    </Td>
+
+                   {/*////////////////////// TYPE */}
+                    <Td title={item?.type}>
+                      <Box className="mc-table-icon role">
+                        {/* <Icon className="material-icons blue">{"settings"}</Icon> */}
+                        <Text as="span">{item.type}</Text>
+                      </Box>
+                    </Td>
+                   {/*////////////////////// DATE */}
+
+                    <Td title="duration">
+                      <span
+                        className="d-flex flex-column"
+                        style={{ paddingRight: "30px" }}
+                      >
+                        {item.start_date && (
+                          <span className="d-flex  align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Start Date :
+                            </h6>
+                            {/* <Text as="span">  Start Date :</Text> */}
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              {item.start_date.split("-").reverse().join("-")}
+                            </p>
+                            {/* <Text as="span"> {item.start_date.split("-").reverse().join("-")}</Text> */}
+
+                          </span>
+                        )}
+                        {item.end_date && (
+                          <span className="d-flex align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              End Date :
+                            </h6>
+                            {/* <Text as="span"> End Date :</Text> */}
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              {item.end_date.split("-").reverse().join("-")}
+                            </p>
+                            {/* <Text as="span"> {item.end_date.split("-").reverse().join("-")}</Text> */}
+
+                          </span>
+                        )}
+                      </span>
+                    </Td>
+
+                   {/*////////////////////// TIME */}
+
+                    <Td title="timing">
+                      <span
+                        className="d-flex flex-column"
+                        style={{ paddingRight: "30px" }}
+                      >
+                        {item.start_date && (
+                          <span className="d-flex  align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Start Time :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              <TimeFormatter time24={item.start_time} />
+                            </p>
+                          </span>
+                        )}
+                        {item.end_date && (
+                          <span className="d-flex align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              End Time :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              <TimeFormatter time24={item.end_time} />
+                            </p>
+                          </span>
+                        )}
+                      </span>
+                    </Td>
+
+                   {/*////////////////////// STATUS */}
+
+                    <Td title={item.status}>
+                      {item.status && (
+                        <Text
+                          className={`mc-table-badge ${
+                            item.status === "ongoing"
+                              ? "green"
+                              : item.status === "upcoming"
+                              ? "yellow"
+                              : "red"
+                          }`}
+                        >
+                          {item.status}
+                        </Text>
+                      )}
+                    </Td>
+                    
+                    <Td title="Tickets Details">
+                      <span
+                        className="d-flex flex-column"
+                        style={{ paddingRight: "30px" }}
+                      >
+                        {item.start_date && (
+                          <span className="d-flex  align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Capacity :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              {item.capacity}
+                            </p>
+                          </span>
+                        )}
+                        {item.end_date && (
+                          <span className="d-flex align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Sold Tickets :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                             {item.attendness_count}
+                            </p>
+                          </span>
+                        )}
+                         {item.end_date && (
+                          <span className="d-flex align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Registered By :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                              
+                            >
+                              {item.attendness.length}
+                            </p>
+                          </span>
+                        )}
+                         {item.end_date && (
+                          <span className="d-flex align-items-center gap-1">
+                            <h6 style={{ fontSize: "12px", marginTop: "5px" }}>
+                              Attended By :
+                            </h6>
+                            <p
+                              style={{
+                                fontSize: "12px",
+                                marginTop: "5px",
+                              }}
+                            >
+                              {"?"}
+                            </p>
+                          </span>
+                        )}
+                      </span>
+                    </Td>
+                    {/* <Td title={item?.capacity}>{item.capacity}</Td>
+                    <Td title={item?.attendness_count}>{item.attendness_count}</Td>
+                    <Td title={item?.capacity}>{item.capacity}</Td> */}
+                    {(type === "upcoming-events" ||
+                      type === "ongoing-events") && (
+                      <Td title={item?.is_deleted}>
+                        <Text
+                          className={`mc-table-badge ${
+                            toggleStatus[index] === false ? "green" : "red"
+                          }`}
+                        >
+                          {toggleStatus[index] === false
+                            ? "Active"
+                            : "inactive"}
+                        </Text>
+                      </Td>
+                    )}
+                    <Td>
+                      <Box className="mc-table-action ">
+                        <Button
+                          title="Edit"
+                          className="material-icons text-primary"
+                          onClick={() =>
+                            handleActionOnEvent(index, true, false, false)
+                          }
+                        >
+                          {"edit"}
+                        </Button>
+                        {/* )} */}
+                        <Button
+                          title="view"
+                          className="material-icons edit "
+                          onClick={() =>
+                            handleActionOnEvent(index, false, true, false)
+                          }
+                        >
+                          {"visibility"}
+                        </Button>
+                        {toggleStatus.length > 0 &&
+                          (type === "upcoming-events" ||
+                            type === "ongoing-events") && (
+                            <ToggleBtn
+                              id={index} // Use a unique identifier (e.g., row index) as id
+                              initialChecked={toggleStatus[index]} // Provide the initial toggle status
+                              onToggle={handleToggle} // Pass a callback to handle the toggle action
+                            />
+                          )}
+                      </Box>
+                    </Td>
+                  </Tr>
+                ))}
+              </>
+            ) : (
+              <Tr>
+                <Td>No Event Found</Td>
+              </Tr>
+            )}
+          </Tbody>
+        )}
+      </Table>
+    </Box>
+  );
 }

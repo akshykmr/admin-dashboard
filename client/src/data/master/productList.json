@@ -1,8 +1,8 @@
 {
-    "pageTitle": "Events",
+    "pageTitle": "Event List",
     "breadcrumb": [
         { "path": "/", "text": "home" },
-        { "text": "product" },
+        { "text": "Event" },
         { "text": "list" }
     ],
     "dotsMenu": {

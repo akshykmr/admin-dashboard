@@ -1,0 +1,22 @@
+{
+    "pageTitle": "Add Banner",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Add Banner" }
+    ],
+    "float": [
+        { "title": "Total Event", "digit": "547", "icon": "shopping_bag", "variant": "lg blue" }, 
+        { "title": "Ongoing Event", "digit": "605", "icon": "widgets", "variant": "lg green" },
+        { "title": "Upcoming Event", "digit": "605", "icon": "widgets", "variant": "lg green" },
+        { "title": "Expired Event", "digit": "249", "icon": "verified_user", "variant": "lg purple" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+            { "label": "rating by", "option": ["1 star", "2 star", "3 star", "4 star", "5 star"] },
+            { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+            { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] }
+        ],
+        "thead": ["Banner Name",  "Action"]
+    }
+}

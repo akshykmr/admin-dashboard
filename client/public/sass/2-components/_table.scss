@@ -127,7 +127,7 @@
 }
 
 .mc-table-profile {
-    @include flex-dimension(center, start, 0px 5px);
+    @include flex-dimension(center, start, 0px 20px);
 
     img {
         width: 25px;

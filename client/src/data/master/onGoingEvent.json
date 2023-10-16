@@ -1,0 +1,14 @@
+{
+    "pageTitle": "Event List",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Ongoing Events" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "Type", "option": ["all", "free", "paid"] },
+            { "label": "search by", "type": "search", "placeholder": "Event Name / Address " }
+        ],
+        "thead": ["Event Name", "Type", "Start Date", "End Date", "Timing",  "Status",  "Capacity", "Sold Tickets", "Attended by" ,"activation", "Action"]
+    }
+}

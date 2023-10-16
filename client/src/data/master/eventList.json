@@ -1,0 +1,15 @@
+{
+    "pageTitle": "Event List",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Ongoing Events" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "Status", "option": ["Active", "Inactive"] },
+            { "label": "Type", "option": ["all", "Free", "Paid"] },
+            { "label": "search by", "type": "search", "placeholder": "Event Name / Address " }
+        ],
+        "thead": ["Event Name", "Type", "Description", "Address", "Status", "Capacity", "Action"]
+    }
+}

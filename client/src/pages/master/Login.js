@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import {
   Box,
   Form,
@@ -7,7 +7,6 @@ import {
   Button,
   Anchor,
   Image,
-  Text,
 } from "../../components/elements";
 import IconField from "../../components/fields/IconField";
 import Logo from "../../components/Logo";
@@ -21,7 +20,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // const serverUrl = `https://api.kullu.dev.client.kloudlite.io/auth/login`;
   
   const serverUrl = process.env.REACT_APP_BASE_URL;
 
@@ -63,20 +61,42 @@ export default function Login() {
       console.log("response", response);
       if (response.status === 200) {
 
-        toast.success("Login successful");
-        
-        setTimeout(() => {
-          console.log("Message", response.data.msg);
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("role", response.data.role);
-          setLoading(false);
-          setLogInData({
-            emailId: "",
-            password: "",
-          });
-          // window.location.href = "/home";
-          navigate("/")
-        }, 1000);
+        if(response.data.profile.role !== "user"){
+          toast.success("Login successful");
+          setTimeout(() => {
+            console.log("Message", response.data.permission);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("role", response.data.profile.role);
+            localStorage.setItem("profile_url", response.data.profile.profile_url);
+            localStorage.setItem("Admin_Name", response.data.profile.name);
+            if(response.data.profile.role === 'admin'){
+              const allowedPermission = response.data.permission?.find(
+                (permission) => permission.is_allowed === true
+              );
+              if (allowedPermission.label === 'Parking Management') {
+                localStorage.setItem("permission", "parking_management");
+              } else if (allowedPermission.label === "Event Management") {
+                localStorage.setItem("permission", "event_management");
+              } else {
+                localStorage.setItem("permission", "ticket_management");
+              }
+              
+            } else {
+              localStorage.setItem("permission",response.data.profile.role)
+              localStorage.setItem("email",response.data.profile.email)
+            }
+            setLoading(false);
+            setLogInData({
+              emailId: "",
+              password: "",
+            });
+            // window.location.href = "/home";
+            navigate("/")
+          }, 1000);
+        } else{
+          toast.error("User not exist");
+        setLoading(false);
+        }
       } else {
         setLoading(false);
         setErrorMessage(response.error);
@@ -114,37 +134,38 @@ export default function Login() {
     e.preventDefault();
     setErrorMessage("");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // check for Email Id ( Must be In Proper Formate)
-    const mobileRegex = /^[0-9]{10}$/; // check for Mobile No ( must be 10 digit)
+    // const mobileRegex = /^[0-9]{10}$/; // check for Mobile No ( must be 10 digit)
     const userId = logInData.UserId.trim();
     const password = logInData.password.trim();
 
     if (userId === "") {
       return  toast.warn(
-        "Email or Mobile Number is required! (use any value)"
+        "Email required!"
       );
     } else if (emailRegex.test(userId)) {
       // Valid email address
       if (password === "") {
-        return  toast.warn("Password is required! (use any value)");
-      } else {
-        setLoading(true);
-        console.log("api calling1");
-        // Call API to check user credentials and save token in localstorage
-        handleLogIn();
-      }
-    } else if (mobileRegex.test(userId)) {
-      // Valid mobile number
-      if (password === "") {
-        return  toast.warn("Password is required! (use any value)");
+        return  toast.warn("Password is required!");
       } else {
         setLoading(true);
         // Call API to check user credentials and save token in localstorage
         handleLogIn();
-        console.log("api calling2");
       }
-    } else {
+    } 
+    // else if (mobileRegex.test(userId)) {
+    //   // Valid mobile number
+    //   if (password === "") {
+    //     return  toast.warn("Password is required! (use any value)");
+    //   } else {
+    //     setLoading(true);
+    //     // Call API to check user credentials and save token in localstorage
+    //     handleLogIn();
+    //     console.log("api calling2");
+    //   }
+    // }
+     else {
       // Neither email nor mobile format
-      return  toast.warn("Invalid email or mobile format");
+      return  toast.warn("Invalid email format");
     }
   };
 
@@ -205,7 +226,7 @@ export default function Login() {
               <span>{data?.button.text} </span>
             ) : (
               <>
-                {" "}
+                 
                 Loading...
                 <svg viewBox="25 25 50 50">
                   <circle r="20" cy="50" cx="50"></circle>
@@ -213,8 +234,8 @@ export default function Login() {
               </>
             )}
           </Button>
-          {/* <Anchor className="mc-auth-forgot" href={ data?.forgot.path }>{ data?.forgot.text }</Anchor>
-                    <Box className="mc-auth-divide"><Text as="span">{ data?.divide.text }</Text></Box>
+          <Anchor className="mc-auth-forgot" href={ data?.forgot.path }>{ data?.forgot.text }</Anchor>
+                    {/* <Box className="mc-auth-divide"><Text as="span">{ data?.divide.text }</Text></Box>
                     <Box className="mc-auth-connect">
                         {data?.connect.map((item, index) => (
                             <Anchor key={ index } href={ item.path } className={ item.classes }>

@@ -1,0 +1,7 @@
+{
+    "pageTitle": "View Banner",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "View Banner" }
+    ]
+}

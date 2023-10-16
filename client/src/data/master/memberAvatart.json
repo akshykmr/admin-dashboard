@@ -1,0 +1,10 @@
+{
+    "profile": {
+        "src": "images/avatar/01.svg",
+        "alt": "avatar",
+        "size": "lg",
+        "fullname": "miron mahmud",
+        "role": "Admin",
+        "icon":"settings"
+    }
+}

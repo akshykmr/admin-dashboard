@@ -1,16 +1,31 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { ProfileDropdown } from '../components/header';
 import { Button, Section, Box, Input } from "../components/elements";
 import { DrawerContext } from '../context/Drawer';
 import { ThemeContext } from '../context/Themes';
 import { Logo } from '../components';
 import data from "../data/master/header.json";
-import { ProfileContext } from '../context/MemberProfile';
 
 
 export default function Header() {
 
-    const { userData } = useContext(ProfileContext);
+    const serverUrl = process.env.REACT_APP_BASE_URL;
+
+    const role = localStorage.getItem("role");
+    const Admin_Name = localStorage.getItem("Admin_Name");
+
+    const profile_url = localStorage.getItem("profile_url");
+    const [profileImg, getUploadedImageFile] = useState()
+
+
+    useEffect(()=>{
+        if(profile_url !== "undefined" && profile_url !== null){
+            getUploadedImageFile(`${serverUrl}${profile_url}`)
+        }
+    },[profile_url])
+
+    // console.log(profile_url)
+    // console.log(profileImg)
 
 
     const { drawer, toggleDrawer } = useContext(DrawerContext);
@@ -50,12 +65,12 @@ export default function Header() {
                         className="mc-header-icon toggle" 
                         onClick={ toggleDrawer } 
                     />
-                    <Box className={`mc-header-search-group ${ search }`}>
+                    {/* <Box className={`mc-header-search-group ${ search }`}>
                         <form className="mc-header-search" ref={ searchRef }>
                             <Button className="material-icons">{ data?.search.icon }</Button>
                             <Input type="search" placeholder={ data?.search.placeholder } />
                         </form>
-                    </Box>
+                    </Box> */}
                 </Box>
                 <Box className="mc-header-right">
                     <Button 
@@ -66,9 +81,9 @@ export default function Header() {
                     />
                     
                     <ProfileDropdown 
-                        name={userData?.name || data.profile.name  }
-                        image={ data.profile.image }
-                        username={userData?.role || ""}
+                        name={Admin_Name}
+                        image={ profileImg || data.profile.image }
+                        username={role === "super_admin" ? "Super Admin" : "Admin"}
                         dropdown={ data.profile.dropdown }
                     />
                 </Box>

@@ -1,0 +1,22 @@
+{
+    "pageTitle": "Homepage",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "homepage" },
+        { "text": "Banner" }
+    ],
+    "float": [
+        { "title": "total products", "digit": "547", "icon": "shopping_bag", "variant": "lg blue" }, 
+        { "title": "total categories", "digit": "605", "icon": "widgets", "variant": "lg green" },
+        { "title": "total barnds", "digit": "249", "icon": "verified_user", "variant": "lg purple" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+            { "label": "rating by", "option": ["1 star", "2 star", "3 star", "4 star", "5 star"] },
+            { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+            { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] }
+        ],
+        "thead": ["Event Name", "Type", "Description", "Address", "Status", "Capacity", "Action"]
+    }
+}

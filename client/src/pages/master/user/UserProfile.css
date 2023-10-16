@@ -1,0 +1,35 @@
+.profile_txt{
+  position: relative;
+    border-radius: 5px;
+    padding: 6px;
+    /* width: 63px; */
+    /* height: 24px; */
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-weight: 700;
+}
+
+.permission_txt {
+    box-shadow: 0 5px 5px #060f2340;
+    background: #1737681f;
+  }
+  .status_txt_active {
+    box-shadow: 0 5px 5px #060f2340;
+    background: #1737681f;
+    color: #2ca30f;
+  }
+  
+  .status_txt_blocked {
+    box-shadow: 0 5px 5px #060f2340;
+    background: #1737681f;
+    color: #df5b5b;
+  }
+  .parkingTxt{
+    font-size: 11px;
+    color: rgb(193, 190, 190);
+  }

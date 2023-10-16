@@ -1,0 +1,18 @@
+{
+    "pageTitle": "Update Event",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Update Event" }
+    ],
+    "title": "add new product",
+    "button": { "path": "#", "icon": "visibility", "text": "show all products" },
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    }
+    
+}
